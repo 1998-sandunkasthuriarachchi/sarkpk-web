@@ -16,3 +16,10 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.social-link {
+    color: #fff;
+}
+.social-link:hover {
+    color: #98ff98;
+}

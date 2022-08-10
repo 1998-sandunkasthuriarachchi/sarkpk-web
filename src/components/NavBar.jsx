@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 const NavBar = () => {
     return (
@@ -8,7 +9,7 @@ const NavBar = () => {
                     <img src="./logo-32x32.png" alt="" />
                 </a>
                 <button
-                    className="navbar-toggler bg-light"
+                    className="navbar-toggler bg-transparent"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
@@ -16,7 +17,9 @@ const NavBar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon">
+                        <AiOutlineMenu color="#fff" size={30} />{' '}
+                    </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase fw-bold">
