@@ -1,15 +1,19 @@
 import React from 'react';
-import { Unity, useUnityContext } from 'react-unity-webgl';
+import Unity, { UnityContext } from 'react-unity-webgl';
+
+const unityContext = new UnityContext({
+    loaderUrl: 'build/Test3.loader.js',
+    dataUrl: 'build/Test3.data',
+    frameworkUrl: 'build/Test3.framework.js',
+    codeUrl: 'build/Test3.wasm'
+});
 
 const UnityDummy = () => {
-    const { unityProvider } = useUnityContext({
-        loaderUrl: 'build/myunityapp.loader.js',
-        dataUrl: 'build/myunityapp.data',
-        frameworkUrl: 'build/myunityapp.framework.js',
-        codeUrl: 'build/myunityapp.wasm'
-    });
-
-    return <Unity useUnityContext={unityProvider}></Unity>;
+    return (
+        <div>
+            <Unity style={{ width: '100%' }} unityContext={unityContext} />
+        </div>
+    );
 };
 
 export default UnityDummy;

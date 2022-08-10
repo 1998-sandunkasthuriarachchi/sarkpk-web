@@ -3,59 +3,33 @@ import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import { SiFacebook } from 'react-icons/si';
 import { BsTelegram, BsDiscord } from 'react-icons/bs';
-import { FaFacebookMessenger, FaTwitterSquare } from 'react-icons/fa';
-import CookieConsent, { Cookies, getCookieConsentValue } from 'react-cookie-consent';
+import { FaTwitterSquare } from 'react-icons/fa';
+import CookieConsent from 'react-cookie-consent';
 import Footer from './components/Footer';
-// import UnityDummy from './components/UnityDummy';
+import { BoxData, TextBoxData } from './data/DummyData';
+import React, { useState } from 'react';
+import Login from './components/Login';
+import Web3 from 'web3';
+import UnityDummy from './components/UnityDummy';
 
 function App() {
-    const BoxData = [
-        {
-            id: '1',
-            img: 'https://lh3.googleusercontent.com/8i47zYp_vOf0P98U6FfyN-hWGN_7l5DxQ8_EB2mIWzclRCiFK_hw9Mp-GRPllS46YT-Wy1RfRJgKaIJ9-sKQVT_echnjXyCUWOcH=w600',
-            text: 'Text'
-        },
-        {
-            id: '2',
-            img: 'https://lh3.googleusercontent.com/8i47zYp_vOf0P98U6FfyN-hWGN_7l5DxQ8_EB2mIWzclRCiFK_hw9Mp-GRPllS46YT-Wy1RfRJgKaIJ9-sKQVT_echnjXyCUWOcH=w600',
-            text: 'Text'
-        },
-        {
-            id: '3',
-            img: 'https://lh3.googleusercontent.com/8i47zYp_vOf0P98U6FfyN-hWGN_7l5DxQ8_EB2mIWzclRCiFK_hw9Mp-GRPllS46YT-Wy1RfRJgKaIJ9-sKQVT_echnjXyCUWOcH=w600',
-            text: 'Text'
-        },
-        {
-            id: '4',
-            img: 'https://lh3.googleusercontent.com/8i47zYp_vOf0P98U6FfyN-hWGN_7l5DxQ8_EB2mIWzclRCiFK_hw9Mp-GRPllS46YT-Wy1RfRJgKaIJ9-sKQVT_echnjXyCUWOcH=w600',
-            text: 'Text'
-        }
-    ];
+    const [isConnected, setIsConnected] = useState(false);
+    const [currentAccount, setCurrentAccount] = useState(null);
 
-    const TextBoxData = [
-        {
-            id: '1',
-            title: 'Text Box',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias autem odio voluptatibus? Deserunt, culpa, '
-        },
-        {
-            id: '2',
-            title: 'Text Box',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias autem odio voluptatibus? Deserunt, culpa,'
-        },
-        {
-            id: '3',
-            title: 'Text Box',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias autem odio voluptatibus? Deserunt, culpa,'
-        },
-        {
-            id: '4',
-            title: 'Text Box',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias autem odio voluptatibus? Deserunt, culpa,'
+    const onLogin = async (provider) => {
+        const web3 = new Web3(provider);
+        const accounts = await web3.eth.getAccounts();
+        if (accounts.length === 0) {
+            console.log('Please connect to metamask');
+        } else if (accounts[0] !== currentAccount) {
+            setCurrentAccount(accounts[0]);
+            setIsConnected(true);
         }
-    ];
+    };
 
-    console.log(getCookieConsentValue());
+    const onLogout = () => {
+        setIsConnected(false);
+    };
 
     return (
         <div className="App">
@@ -78,12 +52,9 @@ function App() {
                     </div>
                 </div>
                 <div className="row py-2 py-lg-5">
-                    <div className="col-lg-12 py-4 d-flex  flex-column justify-content-center  align-items-center" style={{ height: '250px' }}>
-                        {/* <UnityDummy /> */}
-                        {/* <p>Will add unity dummy and metamask login here..</p> */}
-                        <button className="p-3" style={{}}>
-                            Connect metamask
-                        </button>
+                    <div className="col-lg-12 py-4 ">
+                        <UnityDummy />
+                        {/* {!isConnected ? <Login onLogin={onLogin} onLogout={onLogout} text={'Connect metamask'} /> : <p style={{ fontSize: '15px' }}>{currentAccount}</p>} */}
                     </div>
                 </div>
                 <div className="row py-2 py-lg-5">
