@@ -1,10 +1,11 @@
 import React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { Link } from 'react-scroll';
 
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
-            <div className="container">
+            <div className="container-fluid px-5">
                 <a href="" className="navbar-brand">
                     <img src="./logo-32x32.png" alt="" />
                 </a>
@@ -24,24 +25,24 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase fw-bold">
                         <li className="nav-item ">
-                            <a href="" className="nav-link active" aria-current="page" style={{ color: '#98ff98' }}>
+                            <Link to="play" smooth={true} duration={500} className="nav-link active" style={{ color: '#98ff98', cursor: 'pointer' }}>
                                 Play
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="" className="nav-link " aria-current="page" style={{ color: '#98ff98' }}>
+                            <Link to="info" smooth={true} duration={500} className="nav-link " style={{ color: '#98ff98', cursor: 'pointer' }}>
                                 Info
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="" className="nav-link" aria-current="page" style={{ color: '#98ff98' }}>
+                            <Link to="about" smooth={true} duration={500} className="nav-link" style={{ color: '#98ff98', cursor: 'pointer' }}>
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="" className="nav-link" aria-current="page" style={{ color: '#98ff98' }}>
+                            <Link to="community" smooth={true} duration={500} className="nav-link" style={{ color: '#98ff98', cursor: 'pointer' }}>
                                 Community
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

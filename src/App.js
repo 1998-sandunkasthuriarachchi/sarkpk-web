@@ -7,30 +7,10 @@ import { FaTwitterSquare } from 'react-icons/fa';
 import CookieConsent from 'react-cookie-consent';
 import Footer from './components/Footer';
 import { BoxData, TextBoxData } from './data/DummyData';
-import React, { useState } from 'react';
-import Login from './components/Login';
-import Web3 from 'web3';
+import React from 'react';
 import UnityDummy from './components/UnityDummy';
 
 function App() {
-    const [isConnected, setIsConnected] = useState(false);
-    const [currentAccount, setCurrentAccount] = useState(null);
-
-    const onLogin = async (provider) => {
-        const web3 = new Web3(provider);
-        const accounts = await web3.eth.getAccounts();
-        if (accounts.length === 0) {
-            console.log('Please connect to metamask');
-        } else if (accounts[0] !== currentAccount) {
-            setCurrentAccount(accounts[0]);
-            setIsConnected(true);
-        }
-    };
-
-    const onLogout = () => {
-        setIsConnected(false);
-    };
-
     return (
         <div className="App">
             <NavBar />
@@ -51,13 +31,18 @@ function App() {
                         </a>
                     </div>
                 </div>
-                <div className="row py-2 py-lg-5">
-                    <div className="col-lg-12 py-4 ">
+            </div>
+
+            <div className="container-fluid">
+                <div className="row py-2 py-lg-5 play">
+                    <div className="col-lg-12 py-4 d-flex justify-content-center">
                         <UnityDummy />
-                        {/* {!isConnected ? <Login onLogin={onLogin} onLogout={onLogout} text={'Connect metamask'} /> : <p style={{ fontSize: '15px' }}>{currentAccount}</p>} */}
                     </div>
                 </div>
-                <div className="row py-2 py-lg-5">
+            </div>
+
+            <div className="container">
+                <div className="row py-2 py-lg-5 info">
                     {BoxData.map((item, index) => {
                         return (
                             <div key={index} className="col-lg-3 d-flex justify-content-center">
@@ -66,7 +51,7 @@ function App() {
                         );
                     })}
                 </div>
-                <div className="row py-2 py-lg-5">
+                <div className="row py-2 py-lg-5 about">
                     {TextBoxData.map((item, index) => {
                         return (
                             <div key={index} className="col-lg-3 d-flex justify-content-center">
@@ -75,26 +60,26 @@ function App() {
                         );
                     })}
                 </div>
-                <div className="row py-2 py-lg-5">
+                <div className="row py-2 py-lg-5 community">
                     <div className="col-lg-12 d-flex justify-content-center align-items-center">
                         <div className="mb-4 d-flex justify-content-between">
                             <div className="round d-flex justify-content-center align-items-center me-5 p-2">
-                                <a href="https://discord.com" className="social-link">
+                                <a href="https://discord.com" target="_blank" className="social-link">
                                     <BsDiscord size={30} />
                                 </a>
                             </div>
                             <div className="round d-flex justify-content-center align-items-center me-5 p-2">
-                                <a href="https://twitter.com" className="social-link">
+                                <a href="https://twitter.com" target="_blank" className="social-link">
                                     <FaTwitterSquare size={30} />
                                 </a>
                             </div>
                             <div className="round d-flex justify-content-center align-items-center me-5 p-2">
-                                <a href="https://facebook.com" className="social-link">
+                                <a href="https://facebook.com" target="_blank" className="social-link">
                                     <SiFacebook size={30} />
                                 </a>
                             </div>
                             <div className="round d-flex justify-content-center align-items-center p-2">
-                                <a href="https://telegram.com" className="social-link">
+                                <a href="https://telegram.com" target="_blank" className="social-link">
                                     <BsTelegram size={30} />
                                 </a>
                             </div>
