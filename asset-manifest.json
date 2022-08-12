@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sarkpk-web/static/css/main.5b730c45.css",
+    "main.js": "/sarkpk-web/static/js/main.ceae61d8.js",
+    "index.html": "/sarkpk-web/index.html",
+    "main.5b730c45.css.map": "/sarkpk-web/static/css/main.5b730c45.css.map",
+    "main.ceae61d8.js.map": "/sarkpk-web/static/js/main.ceae61d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b730c45.css",
+    "static/js/main.ceae61d8.js"
+  ]
+}
